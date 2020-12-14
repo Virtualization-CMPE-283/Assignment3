@@ -1,3 +1,5 @@
+The following are the CPUID leaf function run on the nested VM Lubuntu by passing the input values ecx = exit_reason(number) and eax = 0x4ffffffe: 
+************************************************************************************
 anupamak@anupama-kvm:~$ cpuid -l 0x4ffffffe -s 0x06
 CPU 0:
    0x4ffffffe 0x06: eax=0x00000000 ebx=0x00000000 ecx=0x00000000 edx=0xffffffff
@@ -193,3 +195,5 @@ CPU 0:
    0x4ffffffe 0x1f: eax=0x00001e75 ebx=0xffff9d40 ecx=0x0000001f edx=0xffff9d40
 CPU 1:
    0x4ffffffe 0x1f: eax=0x00001e75 ebx=0xffff9d40 ecx=0x0000001f edx=0xffff9d40
+************************************************************************************
+The output is read on the host machine captured in "hostVM_read.me" file.
