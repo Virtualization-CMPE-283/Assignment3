@@ -220,3 +220,41 @@ void add_exit_time_for_reason(u64 time_taken, u32 exit_reason){
   atomic64_add(time_taken, &exit_time_per_reason[exit_reason]);
 }
 *************************Changes end************************
+******************Changes in vmx.c*****************
+/*Anupama Kurudi Code Edit*/
+/* Wrapper function over vmx_handle_exit */
+static int vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
+{
+  static int result = 0;
+  u64 start_t, end_t, total_t;
+
+  struct vcpu_vmx *vmx = to_vmx(vcpu);
+  u32 exit_reason = vmx->exit_reason;
+
+  // Every time the guest has exited, increment the number of exits
+  add_exit();
+
+  // Increment the number of exits corresponding to the 
+  // exit_reason
+  add_exit_for_reason(exit_reason);
+
+  // Record the begin time of the exit
+  start_t = rdtsc();
+
+  // Call the actual exit handler
+  result = vmx_handle_exit_int(vcpu, exit_fastpath);
+  
+  // Record the time at the end of the exit
+  end_t = rdtsc();
+  total_t = (end_t - start_t);
+  
+  // Add exit time for all exits
+  add_exit_time(total_t);
+
+  // Record the exit time for the current exit reason
+  // if the exit_reason is within the max_exit_handlers
+  add_exit_time_for_reason(total_t, exit_reason);
+  
+  return result;
+}
+**************Changes END****************************
