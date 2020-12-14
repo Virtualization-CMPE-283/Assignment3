@@ -282,9 +282,18 @@ static int vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 Question 3:
 Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations? Approximately how many exits does a full VM boot entail?
 
+Answer:
+No, the number of exits do not increase at a stable rate. 
+
+Other than the "cpuid" command which invokes the "CPUID" instruction and consequently an exit, the guest OS is running many other instructions behind the scenes. 
+These other instructions could cause exits as they need to be handled in the VMM as well and this gets added to the exit-counter. 
+So yes, there could be more exits performed during a certain VM operation. This can be seen by the variable increase in the number of exit counts 
+as seen in successive executions of the "cpuid" leaf function.
 
 Question 4:
 Of the exit types defined in the SDM, which are the most frequent? Least?
+
+Answer:
 Exit_Reason : 7 , ExitCount : 9203 ---> Interrupt window
 Exit_Reason : 10 , ExitCount : 262069 ---> CPUID
 Exit_Reason : 12 , ExitCount : 45965 ---> HLT
