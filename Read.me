@@ -285,3 +285,16 @@ Comment on the frequency of exits – does the number of exits increase at a sta
 
 Question 4:
 Of the exit types defined in the SDM, which are the most frequent? Least?
+Exit_Reason : 7 , ExitCount : 9203 ---> Interrupt window
+Exit_Reason : 10 , ExitCount : 262069 ---> CPUID
+Exit_Reason : 12 , ExitCount : 45965 ---> HLT
+Exit type (reason): 16 is not supported/enabled in KVM
+Exit_Reason : 28 , ExitCount : 53264 ---> Control-register accesses
+Exit_Reason : 29 , ExitCount : 4 ---> MOV DR
+Exit_Reason : 30 , ExitCount : 426637 ---> I/O instruction
+Exit_Reason : 31 , ExitCount : 7797 ---> RDMSR
+Exit_Reason : 40 , ExitCount : 11354 ---> PAUSE
+Exit_Reason : 46 , ExitCount : 12 ---> Access to GDTR or IDTR
+Exit_Reason : 47 , ExitCount : 4 ---> Access to LDTR or TR
+Exit_Reason : 48 , ExitCount : 294684 ---> EPT violation
+Exit_Reason : 49 , ExitCount : 69870 ---> EPT misconfiguration
