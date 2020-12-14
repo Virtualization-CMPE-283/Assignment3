@@ -5927,7 +5927,7 @@ void dump_vmcs(void)
 		pr_err("Virtual processor ID = 0x%04x\n",
 		       vmcs_read16(VIRTUAL_PROCESSOR_ID));
 }
-
+/*Anupama Kurudi Code Edit*/
 /* Wrapper function over vmx_handle_exit */
 static int vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 {
