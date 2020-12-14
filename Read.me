@@ -14,6 +14,30 @@ QUESTION 1:
 
 Question 2:
 
+STEPS USED TO COMPLETE THE ASSIGNMENT:
+
+Forked the repo from “https://github.com/torvalds/linux ”
+-------------------------------------------------------------------------- 
+Install and configured VM Fusion to have Ubuntu OS running on it with nested virtualization enabled and increasing the memory to 200 GB
+-------------------------------------------------------------------------- 
+On Ubuntu, configure KVM
+-------------------------------------------------------------------------- 
+Download and install Virt-Manager. Using this install “LUBUNTU” to be the nested VM.
+-------------------------------------------------------------------------- 
+Build the kernel in Ubuntu with the following commands -
+- sudo bash
+- apt-get install build-essential kernel-package fakeroot libncurses5-dev libssl-dev ccache bison flex libelf-dev
+- uname -a      
+- cp /boot/config-5.4.0-52-generic    ./.config 
+- make oldconfig      
+- make && make modules && make install && make modules_install
+- reboot
+-------------------------------------------------------------------------- 
+Check the kernel version to be updated to 5.10.0 - rc2
+- uname -r
+-------------------------------------------------------------------------- 
+Made changes made in the following files:
+
 ##The following are the changes made in the files:
 ##1. cpuid.c
 ##2. cpuid.h
