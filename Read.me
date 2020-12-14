@@ -298,3 +298,6 @@ Exit_Reason : 46 , ExitCount : 12 ---> Access to GDTR or IDTR
 Exit_Reason : 47 , ExitCount : 4 ---> Access to LDTR or TR
 Exit_Reason : 48 , ExitCount : 294684 ---> EPT violation
 Exit_Reason : 49 , ExitCount : 69870 ---> EPT misconfiguration
+
+On our local setup, the highest number of exit count was for I/O instruction, EPT Violation and CPUID in order.
+The least number of exit count for many exit reasons are 0 and few with exit count is 4 and 12 as mentioned above.
